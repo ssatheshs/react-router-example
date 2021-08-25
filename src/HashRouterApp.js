@@ -9,10 +9,9 @@ import React from 'react'
 export default class HashRouterApp extends React.Component{
   constructor(props){
     super(props)
-    this.state = {
-      customHistory : createBrowserHistory()
-    }
   }
+
+  history = createBrowserHistory()
 
   userConfirmationFunc = (message, callback) => {
     const status = window.confirm(message);
@@ -22,8 +21,8 @@ export default class HashRouterApp extends React.Component{
   render() {
     return(
       <HashRouter 
-        history={ this.state.customHistory }
-        keyLength= {10} 
+        history={ this.history }
+        hashType="hashbang"
         basename="/admin/"
         getUserConfirmation={ this.userConfirmationFunc }
       >
